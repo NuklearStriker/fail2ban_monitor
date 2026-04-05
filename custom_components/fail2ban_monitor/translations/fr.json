@@ -1,0 +1,56 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Fail2ban Monitor — Serveur",
+        "description": "Renseignez les informations de connexion au serveur.",
+        "data": {
+          "host": "Adresse IP ou hostname",
+          "port": "Port SSH",
+          "username": "Nom d'utilisateur",
+          "auth_method": "Méthode d'authentification"
+        }
+      },
+      "auth_password": {
+        "title": "Fail2ban Monitor — Authentification",
+        "description": "Authentification par mot de passe.",
+        "data": {
+          "password": "Mot de passe",
+          "scan_interval": "Intervalle de mise à jour (secondes)",
+          "use_sudo": "Utiliser sudo pour fail2ban-client"
+        }
+      },
+      "auth_key": {
+        "title": "Fail2ban Monitor — Clé SSH",
+        "description": "Collez le contenu complet de votre clé privée SSH (formats supportés : Ed25519, ECDSA, RSA, DSS).\n\n{key_hint}",
+        "data": {
+          "private_key": "Clé privée SSH",
+          "key_passphrase": "Passphrase (optionnel)",
+          "scan_interval": "Intervalle de mise à jour (secondes)",
+          "use_sudo": "Utiliser sudo pour fail2ban-client"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossible de se connecter au serveur SSH. Vérifiez l'IP, le port et le firewall.",
+      "invalid_auth": "Identifiants invalides. Vérifiez le login et le mot de passe.",
+      "invalid_key": "Clé privée invalide ou passphrase incorrecte.",
+      "fail2ban_not_found": "fail2ban-client introuvable sur le serveur.",
+      "unknown": "Erreur inattendue. Consultez les logs Home Assistant."
+    },
+    "abort": {
+      "already_configured": "Ce serveur est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Fail2ban Monitor",
+        "data": {
+          "scan_interval": "Intervalle de mise à jour (secondes)",
+          "use_sudo": "Utiliser sudo pour fail2ban-client"
+        }
+      }
+    }
+  }
+}

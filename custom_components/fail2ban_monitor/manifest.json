@@ -1,0 +1,13 @@
+{
+  "domain": "fail2ban_monitor",
+  "name": "fail2ban Monitor",
+  "version": "1.0.0",
+  "documentation": "https://github.com/NuklearStriker/fail2ban_monitor",
+  "issue_tracker": "https://github.com/NuklearStriker/fail2ban_monitor/issues",
+  "requirements": ["paramiko==3.4.0"],
+  "dependencies": [],
+  "codeowners": ["@NuklearStriker"],
+  "config_flow": true,
+  "iot_class": "local_polling",
+  "integration_type": "device"
+}
