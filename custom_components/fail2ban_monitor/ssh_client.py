@@ -103,9 +103,17 @@ class Fail2banSSHClient:
     # Exécution de commandes
     # ------------------------------------------------------------------
 
-    def _run_command(self, client: paramiko.SSHClient, command: str) -> str:
-        """Exécute une commande SSH et retourne la sortie stdout."""
-        if self._use_sudo:
+    def _run_command(
+        self, client: paramiko.SSHClient, command: str, needs_sudo: bool = True
+    ) -> str:
+        """
+        Exécute une commande SSH et retourne la sortie stdout.
+
+        needs_sudo : True = applique sudo si use_sudo est activé (commande fail2ban-client)
+                     False = pas de sudo ( commandes standard : which, test, etc...)
+        """
+        apply_sudo = self._use_sudo and needs_sudo
+        if apply_sudo:
             if self._auth_method == AUTH_METHOD_PASSWORD and self._password:
                 # On peut piper le mot de passe à sudo
                 safe_pwd = self._password.replace("'", "'\\''")
@@ -145,10 +153,10 @@ class Fail2banSSHClient:
         try:
             client = self._get_client()
             try:
-                output = self._run_command(client, "which fail2ban-client")
+                output = self._run_command(client, "which fail2ban-client", needs_sudo=False)
                 if not output:
                     return "fail2ban_not_found"
-                self._run_command(client, "fail2ban-client ping")
+                self._run_command(client, "fail2ban-client ping", needs_sudo=True)
                 return None
             finally:
                 client.close()
