@@ -59,7 +59,8 @@ class Fail2banDaemonBinarySensor(
             manufacturer="Fail2ban",
             model="Fail2ban Server",
             sw_version=self.coordinator.data.get("version"),
-            configuration_url=f"ssh://{self._host}",
+            # configuration url ssh non supporté par HA
+            # configuration_url=f"ssh://{self._host}",
         )
 
     @property
