@@ -1,6 +1,6 @@
 # Fail2ban Monitor — Intégration Home Assistant
 
-Monitore votre serveur **Fail2ban** à distance via SSH, directement depuis Home Assistant.
+Monitor votre serveur **Fail2ban** à distance via SSH, directement depuis Home Assistant.
 
 ---
 
