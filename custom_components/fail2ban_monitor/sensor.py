@@ -209,7 +209,8 @@ class _Fail2banBaseSensor(CoordinatorEntity[Fail2banCoordinator], SensorEntity):
             manufacturer="Fail2ban",
             model="Fail2ban Server",
             sw_version=self.coordinator.data.get("version"),
-            configuration_url=f"ssh://{self._host}",
+            # Configuration url ssh non supporte par HA
+            # configuration_url=f"ssh://{self._host}", 
         )
 
 
